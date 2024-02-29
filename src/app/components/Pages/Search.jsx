@@ -200,19 +200,7 @@ function Search() {
                         <div className="flex w-3/6">
                         </div>
                     </div>
-                    {/* <div className="w-full">
-                        <h1>Series Search</h1>
-                        <form onSubmit={handleSubmitTv}>
-                            <input
-                                type="text"
-                                placeholder="Search for tv series..."
-                                value={searchTerm}
-                                onChange={handleChange}
-                                className="text-green-500 border-b-[1px] border-blue-500 text-2xl w-full focus:outline-none focus:border-opacity-100 bg-transparent py-1"
-                            />
-                            <ButtonDefault text={"SEARCH SERIES"} />
-                        </form>
-                    </div> */}
+
                 </div>
                 {isLoading && <p>Loading results...</p>}
                 {error && <p>Error: {error.message}</p>}
