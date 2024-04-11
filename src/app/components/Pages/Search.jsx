@@ -18,6 +18,7 @@ import {
     serverTimestamp,
 } from "firebase/firestore";
 import Moviecard from '@/app/components/Cards/Moviecard'
+import Details from "../Cards/Details";
 
 
 function Search() {
@@ -133,7 +134,7 @@ function Search() {
 
     return (
         <>
-            {isLoadingD ? <><div className="w-full p-10 h-full overflow-y-scroll fixed top-0 z-40 bgblurbluef flex justify-center items-center">
+            {isLoadingD ? <><div className="w-full h-full overflow-y-scroll fixed top-0 z-40 bgblurbluef flex justify-center items-center">
                 {isLoadingD && <p>Loading...</p>}
                 {error && <p>Error: {error.message}</p>}
             </div></> : null}
@@ -143,15 +144,8 @@ function Search() {
                         className="bg-red-500 text-White font-semibold px-1">CLOSE</button>
                     {isDetail ? <>
                         {movieDetails && (
-                            <div className="h-full">
-                                <h2>{movieDetails.title}</h2>
-                                <p>{movieDetails.overview}</p>
-                                <p>Release Date: {movieDetails.release_date}</p>
-                                <p>Runtime: {movieDetails.runtime} minutes</p>
+                            <Details overview={movieDetails.overview} release_date={movieDetails.release_date} runtime={movieDetails.runtime} title={movieDetails.title}>
                                 <p>Genres: {movieDetails.genres.map(genre => genre.name).join(', ')}</p>
-                                {/* Render other movie details as needed */}
-
-                                {/* Render credits (cast and crew information) */}
                                 {castImages.length > 0 && (
                                     <div>
                                         <h3>Cast</h3>
@@ -165,7 +159,7 @@ function Search() {
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            </Details>
                         )}
                     </> : null}
 
