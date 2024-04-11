@@ -14,8 +14,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={typh.className}>
-        <div className="w-screeŋ̄ h-screen p-3 overflow-y-hidden overflow-x-scroll">
-          <div className="w-full h-full px-5 border-2 rounded-lg border-blue-500 overflow-x-scroll">
+        <div className="w-screen p-3 overflow-y-hidden">
+          <div className="w-full px-5 border-2 rounded-lg border-blue-500">
             <Topbar />
             {children}
 
