@@ -4,7 +4,7 @@ import "./globals.css";
 const typh = Saira({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Movie Corner",
+  title: "Dafazan's Movie Corner",
   description: "Movie Corner By Dafazan",
 };
 
