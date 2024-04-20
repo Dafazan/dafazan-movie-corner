@@ -191,7 +191,7 @@ function Watchlist() {
     };
     return (
         <div className='w-full h-full'>
-            <div className="w-full h-full grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-5">
                 {movies.map((movie, i) => (
                     <MoviecardButonless
                         key={movie.id}

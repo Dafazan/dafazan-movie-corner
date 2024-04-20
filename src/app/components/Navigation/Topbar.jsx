@@ -25,12 +25,12 @@ function Topbar() {
             <div className="w-full bgblurbluef border-y border-blue-500">
                 <div className="flex gap-2 ">
                     <a href='/' className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>HOME</a>
+                    <div onClick={searchVisibility} className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>SEARCH</div>
                     <a href='/watchlist' className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>MY WATCHLIST</a>
                     <a href='/ratings' className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>MY RATINGS</a>
                     <a href='/watched' className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>WATCHED</a>
                     <div onMouseEnter={listVisibility} className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>MY LIST</div>
                     <a href='/profile' className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>PROFILE</a>
-                    <div onClick={searchVisibility} className='cursor-pointer px-2 text-blue-400 hover:bg-blue-500 hover:text-white'>SEARCH</div>
                 </div>
             </div>
             {isHiddenSearch ? null : (

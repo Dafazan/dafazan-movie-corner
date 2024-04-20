@@ -98,10 +98,20 @@ function Popular() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3, // Display two slides at a time
-        slidesToScroll: 3,
+        slidesToShow: 2,
+        slidesToScroll: 1,
         // Scroll two slides at a time
     };
+
+      const settingscst = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 9,
+        slidesToScroll: 1,
+        // Scroll two slides at a time
+    };
+
     const sliderRef = useRef(null);
 
     const handlePrev3 = () => {
@@ -126,24 +136,42 @@ function Popular() {
                 {error && <p>Error: {error.message}</p>}
             </div></> : null}
             {isDetail ? <>
-                <div className="w-full p-10 h-full overflow-y-scroll fixed top-0 z-40 bgblurbluef flex justify-center items-center">
+                <div className="w-full p-10 -translate-x-[40px] h-full overflow-y-scroll fixed top-0 z-40 bgblurbluef justify-center items-center">
                     <button onClick={handleCloseDetail}
                         className="bg-red-500 text-White font-semibold px-1">CLOSE</button>
                     {isDetail ? <>
                         {movieDetails && (
-                            <Details overview={movieDetails.overview} release_date={movieDetails.release_date} runtime={movieDetails.runtime} title={movieDetails.title}>
-                                <p>Genres: {movieDetails.genres.map(genre => genre.name).join(', ')}</p>
+                            <Details overview={movieDetails.overview} release_date={movieDetails.release_date} runtime={movieDetails.runtime} title={movieDetails.title} genre={movieDetails.genres.map(genre => genre.name).join(', ')} img={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}>
+                                
                                 {castImages.length > 0 && (
-                                    <div>
-                                        <h3>Cast</h3>
-                                        <div className="cast-images">
-                                            {castImages.map((cast, index) => (
-                                                <div key={index} className="cast-member">
-                                                    <img src={cast.profileImage} alt={`${cast.name}`} />
-                                                    <p>{cast.name} as {cast.character}</p>
+                                    <div className=" border border-blue-500 p-5 mt-5">
+                                        <h3 className="text-xl mb-5  text-center w-full">Cast</h3>
+
+                            <Slider {...settingscst} className=' ' ref={sliderRef}>
+                                 {castImages.map((cast, index) => (
+                                                <div key={index} className="cast-member w-full">
+                                                    <div className="w-full flex items-center justify-center">
+
+                                                    <img className="w-[40px] rounded-md border border-blue-600" src={cast.profileImage} alt={`${cast.name}`} />
+                                                    </div>
+                                                     <div className="w-full flex flex-col text-center text-xs items-center justify-center">
+                                                    
+                                                    <div className="flex  w-full px-2 h-10 items-center justify-center">
+
+                                                    <p className="bg-blue-500 px-1 rounded-md ">{cast.name}</p>
+                                                    </div>
+                                                    <p>as</p>
+                                                      <div className="flex flex-col w-full px-2 min-h-10  items-center">
+
+                                                    <p className="bg-green-600 px-1 rounded-md ">{cast.character}</p>
+                                                    </div>
+                                                    
+                                                    </div>
+                                                   
                                                 </div>
                                             ))}
-                                        </div>
+                            </Slider>
+                                        
                                     </div>
                                 )}
                             </Details>

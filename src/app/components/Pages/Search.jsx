@@ -168,7 +168,7 @@ function Search() {
                 </div>
             </> :
                 null}
-            <div className="p-10">
+            <div className="px-10">
                 <div className="flex flex-col md:flex-row gap-5">
                     <div className="w-full">
 
@@ -180,14 +180,14 @@ function Search() {
                                     placeholder="Search Title..."
                                     value={searchTerm}
                                     onChange={handleChange}
-                                    className="text-green-500 border-b-[1px] border-blue-500 text-2xl w-full focus:outline-none focus:border-opacity-100 bg-transparent py-1"
+                                    className="text-green-500 border-b-[1px] border-blue-500 text-md w-full focus:outline-none focus:border-opacity-100 bg-transparent py-1"
                                 />
                             </form>
-                            <div>
+                            <div className="scale-50 w-[120px]">
 
                                 <ButtonDefault action={handleSubmit} text={"SEARCH MOVIE"} />
                             </div>
-                            <div>
+                            <div className="scale-50  w-[120px]">
                                 <ButtonDefault action={handleSubmitTv} text={"SEARCH SERIES"} />
                             </div>
                         </div>
@@ -201,7 +201,7 @@ function Search() {
                 {searchResults.length > 0 && (
                     <>
                         <h1 className="md:text-3xl text-xl pb-3 font-medium">Search results for <span className="text-lime-600">&quot;{searchTerm}&quot;</span> in {isMovie ? 'movies' : 'tv series'} :</h1>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             {searchResults.map((movie) => (
                                 <Moviecard key={movie.id} id={movie.id} img={movie.poster_path} title={isMovie ? movie.title : movie.name} desc={movie.overview} >
                                     <button onClick={() => fetchMovieDetails(movie.id)}
