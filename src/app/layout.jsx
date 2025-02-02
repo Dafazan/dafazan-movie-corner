@@ -14,11 +14,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={typh.className}>
-        <div className="w-screen p-3 overflow-y-hidden">
-          <div className="w-full px-5 border-2 rounded-lg border-blue-500">
+        <div className="w-screen md:p-3 overflow-hidden">
+          <div className=" hidden w-full px-5 border-2 md:flex flex-row md:flex-col rounded-lg border-blue-500">
             <Topbar />
             {children}
 
+          </div>
+          <div className="md:hidden block">
+            <Search/>
           </div>
 
         </div>

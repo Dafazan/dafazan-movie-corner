@@ -134,6 +134,7 @@ function Search() {
 
     return (
         <>
+           
             {isLoadingD ? <><div className="w-full h-full overflow-y-scroll fixed top-0 z-40 bgblurbluef flex justify-center items-center">
                 {isLoadingD && <p>Loading...</p>}
                 {error && <p>Error: {error.message}</p>}
@@ -166,13 +167,99 @@ function Search() {
 
 
                 </div>
+
+
+                 <div className="w-screen h-screen flex flex-col  item-center justify-center items-center fixed z-50">
+                 <div className=" flex justify-center w-[90%]">
+
+                        <button onClick={handleCloseDetail} className="bg-red-500 rounded-t-xl w-full font-bold px-1">CLOSE</button>
+                        </div>
+                <div className="w-[90%] h-[90%]  bgblurblue border border-blue-500 rounded-b-xl p-3  ">
+                    
+                    <div className="flex flex-col h-full overflow-y-scroll gap-5">
+                       
+                        <div className="flex justify-center">
+                        <div className="bg-red-900 rounded-md w-32 h-48">
+
+                        </div>
+
+                        </div>
+                        {isDetail ? <>
+                        {movieDetails && (
+                            <>
+                            <div className="w-full flex flex-col gap-2">
+                            <div className="sticky top-0 bg-blue-500 p-1 rounded-sm">
+                                <p className=" font-semibold text-2xl">{movieDetails.title} ({movieDetails.release_date.split("-")[0]})</p>
+                                <p className="text-xs">{movieDetails.genres.map(genre => genre.name).join(', ')}</p>
+                                
+                            </div>
+                            <p className="font-light">{movieDetails.overview}</p>
+                            <p className="font-medium">{movieDetails.runtime} Minutes</p>
+                            <div className="flex flex-col gap-2">
+                                {castImages.length > 0 && (
+<>
+
+                                    <p>Cast</p>
+                                <div className="w-full overflow-x-auto">
+                                <div className="inline-flex gap-2">
+                                    {castImages.map((cast, index) => (
+
+                                        <div key={index} className="border border-blue-500 rounded-md p-1 h-20 gap-1 flex">
+                                        <div className="w-12 bg-black rounded-md"> <img className="bg-cover w-full h-full rounded-md" src={cast.profileImage} alt={`${cast.name}`} /></div>
+                                        <div className="text-xs w-24">
+                                            <p>{cast.name}</p>
+                                            <p>As {cast.character}</p>
+                                        </div>
+                                    </div>
+
+                            
+                                            ))}
+                                    
+                                   
+                                </div>
+                                </div>
+</>
+                                
+                                    
+                                )}
+                                
+
+
+                            </div>
+                        </div>
+                            {/* <Details overview={movieDetails.overview} release_date={movieDetails.release_date} runtime={movieDetails.runtime} title={movieDetails.title}>
+                                <p>Genres: {movieDetails.genres.map(genre => genre.name).join(', ')}</p>
+                                {castImages.length > 0 && (
+                                    <div>
+                                        <h3>Cast</h3>
+                                        <div className="cast-images">
+                                            {castImages.map((cast, index) => (
+                                                <div key={index} className="cast-member">
+                                                    <img src={cast.profileImage} alt={`${cast.name}`} />
+                                                    <p>{cast.name} as {cast.character}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </Details> */}
+                            </>
+                        )}
+                    </> : null}
+
+                        
+                    </div>
+                </div>
+            </div>
+
+
             </> :
                 null}
             <div className="p-10">
                 <div className="flex flex-col md:flex-row gap-5">
                     <div className="w-full">
 
-                        <div className="flex w-full h-full items-center gap-3">
+                        <div className="flex w-full h-full flex-col md:flex-row items-center md:gap-3">
 
                             <form className="w-full" onSubmit={handleSubmit}>
                                 <input
@@ -183,12 +270,15 @@ function Search() {
                                     className="text-green-500 border-b-[1px] border-blue-500 text-2xl w-full focus:outline-none focus:border-opacity-100 bg-transparent py-1"
                                 />
                             </form>
+                            <div className="flex md:flex-row md:gap-3 flex-col">
+
                             <div>
 
                                 <ButtonDefault action={handleSubmit} text={"SEARCH MOVIE"} />
                             </div>
                             <div>
                                 <ButtonDefault action={handleSubmitTv} text={"SEARCH SERIES"} />
+                            </div>
                             </div>
                         </div>
                         <div className="flex w-3/6">
